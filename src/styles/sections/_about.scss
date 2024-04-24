@@ -1,0 +1,271 @@
+.about {
+    background-color: $white_color;
+    @include containerMobile();
+    padding-top: 24px;
+    padding-bottom: 30px; 
+    .about_container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        box-sizing: border-box;
+        opacity: 0%;
+        &.active {
+            animation: animationAbout 1s ease 0s alternate forwards;
+        }
+        
+        .about_container_title {
+            @include styleText(22px, 479, 32.89px, $black_color, 5%, capitalize);
+        }
+        .about_container_imagegroup {
+            position: relative;
+            padding-right: 53 - 16px;
+            & div {
+                width: clamp(208px, 55.5vw, 500px);
+                max-width: 100%;
+                overflow: hidden;
+                float: right;
+                & img {
+                    width: 100%;
+                    height: auto;
+                    max-height: clamp(249px, 66vw, 700px);
+                    display: block;
+                }
+            }
+            .image_container_full {
+                position: absolute;
+                bottom: 145px;
+                left: 0;
+                @include styleText(clamp(50px, 14vw, 90px), 700, 100%, rgba(255, 255, 255, 0), 16px, uppercase);
+                font-family: "Sometype Mono", monospace;
+                -webkit-text-stroke: 3px $black_color;
+                &.active {
+                    animation: animationAboutFull 1.6s ease 0s alternate forwards;
+                }
+            }
+            .image_container_stack {
+                position: absolute;
+                bottom: 13px;
+                right: 0;
+                @include styleText(clamp(50px, 14vw, 90px), 700, 100%, $black_color, 15px, uppercase);
+                font-family: "Sometype Mono", monospace;
+                &.active {
+                    animation: animationAboutStack 1.6s ease 0s alternate forwards;
+                }
+            }
+        }
+        .about_container_lowerblock {
+            display: flex;
+            box-sizing: border-box;
+            gap: 32px;
+            flex-direction: column;
+            padding-top: 14px;
+            .about_container_titlehidden {
+                display: none;
+            }
+            .about_container_paragraphs {
+                font-family: "Saira", sans-serif;
+                font-optical-sizing: auto;
+                font-style: normal;
+                font-variation-settings:"wdth" 100;
+                @include styleText(14px, 200, 20.86px, $black_color, 5%, lowercase);
+                display: flex;
+                box-sizing: border-box;
+                gap: 4px;
+                flex-direction: column;
+            }
+            .about_container_link {
+                .about_container_button {
+                    font-family: "Saira", sans-serif;
+                    font-optical-sizing: auto;
+                    font-style: normal;
+                    font-variation-settings:"wdth" 100;
+                    border-radius: 3px;
+                    @include button(16px, $black_color)
+                }
+            }
+        }
+    }
+}
+
+@keyframes animationAbout {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+     }
+}
+
+@keyframes animationAboutFull {
+    0% {
+        opacity: 0%;
+        left: -300px;
+    }
+    100% {
+        opacity: 100%;
+        left: 0px;
+    }
+}
+
+@keyframes animationAboutStack {
+    0% {
+        opacity: 0%;
+        right: -300px;
+    }
+    100% {
+        opacity: 100%;
+        right: 0px;
+    }
+}
+
+@media screen and (min-width: $min-tablet) {
+    @keyframes animationAboutFull {
+        0% {
+            opacity: 0%;
+            left: -281px;
+        }
+        100% {
+            opacity: 100%;
+            left: 19px;
+        }
+    }
+
+    @keyframes animationAboutStack {
+        0% {
+            opacity: 0%;
+            right: 297px;
+        }
+        100% {
+            opacity: 100%;
+            right: -3px;
+        }
+    }
+    .about {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        @include containerTablet();
+        .about_container {
+            flex-direction: row;
+            box-sizing: border-box;
+            justify-content: end;
+            align-items: center;
+            gap: 0px;
+            .about_container_titlevisible {
+                display: none;
+            }
+            .about_container_imagegroup {
+                padding-right: 0px;
+                max-width: clamp(321px, 42vw, 432px);
+                max-height: clamp(449px, 58.5vw, 600px);
+                & div {
+                    width: clamp(321px, 42vw, 432px);
+                    max-width: 100%;
+                    overflow: visible;
+                    float: none;
+                    & img {             
+                        width: 100%;
+                        height: auto;
+                        max-height: clamp(468px, 61vw, 654px);
+                        display: block;
+                    }
+                }
+                .image_container_full {
+                    bottom: 289px;
+                    left: 19px;
+                    @include styleText(clamp(50px, 7vw, 130px), 700, 100%, rgba(255, 255, 255, 0), 18px, uppercase);
+                    -webkit-text-stroke: 3px $black_color;
+                }
+                .image_container_stack {
+                    @include styleText(clamp(50px, 7vw, 130px), 700, 100%, $black_color, 15px, uppercase);
+                    bottom: 112px;
+                    right: -3px;
+                }
+            }
+            .about_container_lowerblock {
+                padding: 42px 15px 56px 69px;
+                width: 100%;
+                gap: 26px;
+                
+                .about_container_paragraphs {
+                    gap: 19px;
+                    .about_container_titlehidden {
+                        font-family: "Josefin Sans", sans-serif;
+                        display: block;
+                        padding-bottom: 27px;
+                    }
+                }
+                & button {
+                    width: 153px;
+                    height: 38px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: $min-desktop) {
+    @keyframes animationAboutFull {
+        0% {
+            opacity: 0%;
+            left: -379px;
+        }
+        100% {
+            opacity: 100%;
+            left: -79px;
+        }
+    }
+
+    @keyframes animationAboutStack {
+        0% {
+            opacity: 0%;
+            right: 205px;
+        }
+        100% {
+            opacity: 100%;
+            right: -95px;
+        }
+    }
+    .about {
+        @include containerDesktop();
+        .about_container {
+            width: 100%;
+            max-width: 1320px;
+            height: 100%;
+            max-height: 600px;
+            .about_container_title {
+                @include styleText(34px, 479, 50.83px, $black_color, 5%, capitalize);
+            }
+            .about_container_imagegroup {
+                .image_container_full {
+                    @include styleText(110px, 700, 100%, rgba(255, 255, 255, 0), 20px, uppercase);
+                    bottom: 366px;
+                    left: -79px;
+                    -webkit-text-stroke: 5px $black_color;
+                }
+                .image_container_stack {
+                    @include styleText(110px, 700, 100%, $black_color, 18px, uppercase);
+                    bottom: 177px;
+                    right: -95px;
+                }
+            }
+            .about_container_lowerblock {
+                padding: 0px;
+                margin: 0px 90px 0px 246px;
+                width: 404px;
+                .about_container_paragraphs {
+                    @include styleText(16px, 200, 23.84px, $black_color, 5%, lowercase);
+                }
+                & button {
+                    width: 171px;
+                    height: 41px;
+
+                    &:hover {
+                        background-color: $black_color;
+                        color: $white_color;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,77 @@
+.congratulation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 32px 16px;
+  box-sizing: border-box;
+
+  &__modal {
+    width: 100%;
+    background-color: $black_color;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__icon {
+      margin-bottom: 4px;
+    }
+
+    &__title {
+      @include styleText(22px, 300, 150%, $white_color, 0.5px, none);
+      font-family: "Saira", sans-serif;
+      margin-bottom: 40px;
+    }
+
+    &__button {
+      @include button(18px, $white_color);
+      width: 171px;
+    }
+  }
+}
+
+
+
+@media screen and (min-width: $min-tablet) {
+  .congratulation {
+    padding: 50px 40px;
+
+  }
+}
+
+
+
+@media screen and (min-width: $min-desktop) {
+  .congratulation {
+
+    &__modal {
+      width: 480px;
+
+      &__title {
+        margin-bottom: 64px;
+      }
+
+      &__button {
+
+        &:hover {
+          background-color: $white_color;
+          color: $black_color;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+.congratulation-hidden {
+  display: none;
+}

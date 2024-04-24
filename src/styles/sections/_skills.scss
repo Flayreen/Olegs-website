@@ -1,0 +1,246 @@
+.skills {
+  @include containerMobile();
+  margin-top: 60px;
+  padding-bottom: 13px;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+    position: relative;
+  }
+
+
+  &__title {
+    @include styleText(50px, 700, 100%, $white_color, 10px, uppercase);
+    right: 0px;
+    opacity: 0%;
+    position: absolute;
+    &.active {
+      animation: animationSkillsSkills 1.6s ease 0s alternate forwards;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 80px;
+
+    &__row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+
+      &__scroll {
+        position: relative;
+        left: -16px;
+        width: 100vw;
+        padding: 0 16px;
+        box-sizing: border-box;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      &__title {
+        @include styleText(24px, 400, 150%, $white_color, 2px, capitalize);
+        opacity: 0%;
+        &.active1 {
+          animation: animationSkillsTitle1 0.8s ease 0s alternate forwards;
+        }
+        &.active2 {
+          animation: animationSkillsTitle1 0.8s ease 0.8s alternate forwards;
+        }
+        &.active3 {
+          animation: animationSkillsTitle1 0.8s ease 1.6s alternate forwards;
+        }
+
+      }
+
+      &__skills {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        width: 900px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid $white_color;
+        opacity: 0%;
+
+        &.active1_block {
+          animation: animationSkillsBlock 0.8s ease 0s alternate forwards;
+        }
+        &.active2_block {
+          animation: animationSkillsBlock 0.8s ease 0.8s alternate forwards;
+        }
+        &.active3_block {
+          animation: animationSkillsBlock 0.8s ease 0.8s alternate forwards;
+        }
+
+        &--medium {
+          width: 730px; 
+        }
+        &--small {
+          width: 310px;
+          
+        }
+
+        &__item {
+          display: inline-block;
+          padding: 4px 8px;
+          box-sizing: border-box;
+          border: 1px solid $white-op_color;
+          @include styleText(14px, 400, 153%, $white-op_color, 0px, none);
+          font-family: "Saira", sans-serif;
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+@keyframes animationSkillsSkills {
+  0% {
+      opacity: 100%;
+      transform: translateX(600px);
+  }
+  100% {
+      opacity: 100%;
+      transform: translateX(0);
+  }
+}
+
+@keyframes animationSkillsTitle1 {
+  0% {
+      opacity: 0%;
+      transform: translateX(-300px);
+  }
+  100% {
+      opacity: 100%;
+      transform: translateX(0);
+  }
+}
+
+@keyframes animationSkillsBlock {
+  0% {
+      opacity: 0%;
+  }
+  50% {
+      opacity: 50%;
+  }
+  100% {
+      opacity: 100%;
+   }
+}
+
+
+
+@media screen and (min-width: $min-tablet) {
+  .skills {
+    @include containerTablet();
+    margin-top: 28px;
+    padding-bottom: 0;
+
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+
+    &__title {
+      @include styleText(clamp(50px, 6.6vw, 110px), 700, 100%, $white_color, 15px, uppercase);
+      text-align: right;
+    }
+
+    &__content {
+      &__row {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+
+        &__scroll {
+          left: -40px;
+          padding: 0 40px;
+        }
+      }
+    }
+  }
+}
+
+
+
+@media screen and (min-width: $min-desktop) {
+  .skills {
+    @include containerTablet();
+    margin-top: 37px;
+    padding-bottom: 13px;
+    display: flex;
+    justify-content: center;
+
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      max-width: 1320px;
+    }
+
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+
+      &__row {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+
+
+        &__scroll {
+          position: relative;
+          left: 0;
+          padding: 0;
+        }
+
+        &__title {
+          @include styleText(34px, 400, 100%, $white_color, 2px, capitalize);
+        }
+
+        &__skills {
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+          width: 1200px;
+          padding-bottom: 40px;
+          border-bottom: 1px solid $white_color;
+
+          &--medium {
+            width: 1050px;
+          }
+          &--small {
+            width: 470px;
+          }
+
+          &__item {
+            display: inline-block;
+            padding: 8px 16px;
+            box-sizing: border-box;
+            border: 1px solid $white-op_color;
+            @include styleText(16px, 400, 150%, $white-op_color, 0px, none);
+            font-family: "Saira", sans-serif;
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+}

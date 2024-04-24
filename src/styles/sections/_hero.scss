@@ -1,0 +1,335 @@
+.hero {
+  @include containerMobile();
+  margin-top: 81px;
+  padding-bottom: 45px;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+
+  &__image-container {
+    position: relative;
+
+    & img {
+      width: 78%;
+    }
+
+    &__first-text {
+      position: absolute;
+      bottom: 100px;
+      left: 0;
+      opacity: 0%;
+
+      &.active {
+        animation: animationHeroDev 1.6s ease 0s alternate forwards;
+      }
+
+      @include styleText(clamp(60px, 21vw, 100px), 600, 100%, rgba(255, 255, 255, 0), 15px, uppercase);
+      font-family: "Sometype Mono", monospace;
+      -webkit-text-stroke: 3px $white_color;
+    }
+
+    &__second-text {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      opacity: 0%;
+
+      &.active {
+        animation: animationHeroOps 1.6s ease 0s alternate forwards;
+      }
+
+      @include styleText(clamp(60px, 21vw, 100px), 600, 100%, $white_color, 15px, uppercase);
+      font-family: "Sometype Mono", monospace;
+    }
+  }
+
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    &__title {
+      @include styleText(22px, 400, 150%, $white_color, 1px, none);
+    }
+
+    &__paragraphs {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      &__first {
+        @include styleText(16px, 300, 130%, $white_color, 2px, none);
+      }
+      &__second {
+        @include styleText(14px, 200, 150%, $white-op_color, 1px, none);
+        font-family: "Saira", sans-serif;
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 16px;
+
+      &__button {
+        @include button(14px, $white_color);
+        font-family: "Saira", sans-serif;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@keyframes animationHeroDev {
+  0% {
+      opacity: 0%;
+      left: -500px;
+  }
+  100% {
+      opacity: 100%;
+      left: 0px;
+  }
+}
+
+@keyframes animationHeroOps {
+  0% {
+      opacity: 0%;
+      right: -500px;
+  }
+  100% {
+      opacity: 100%;
+      right: 0px;
+  }
+}
+
+
+@media screen and (min-width: $min-tablet) {
+  @keyframes animationHeroDev {
+  0% {
+      opacity: 0%;
+      left: -680px;
+  }
+  100% {
+      opacity: 100%;
+      left: -180px;
+  }
+  }
+
+  @keyframes animationHeroOps {
+    0% {
+        opacity: 0%;
+        right: -485px;
+    }
+    100% {
+        opacity: 100%;
+        right: 15px;
+    }
+  }
+  .hero {
+    @include containerTablet();
+    margin-top: 52px;
+    padding-bottom: 104px;
+
+    &__wrapper {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 20px;
+    }
+
+
+    &__image-container {
+      position: relative;
+      width: 120vw;
+
+      & img {
+        width: 100%;
+      }
+
+      &__first-text {
+        position: absolute;
+        bottom: 278px;
+        left: -180px;
+
+        @include styleText(clamp(100px, 13vw, 180px), 600, 100%, rgba(255, 255, 255, 0), 15px, uppercase);
+        -webkit-text-stroke: 3px $white_color;
+      }
+
+      &__second-text {
+        position: absolute;
+        bottom: 45px;
+        right: 15px;
+
+        @include styleText(clamp(100px, 13vw, 180px), 600, 100%, $white_color, 15px, uppercase);
+      }
+    }
+
+
+    &__content {
+      position: relative;
+      bottom: -44px;
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: column;
+      gap: 25px;
+
+      &__title {
+        @include styleText(22px, 400, 150%, $white_color, 1px, none);
+      }
+
+      &__paragraphs {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        &__first {
+          @include styleText(16px, 300, 130%, $white_color, 2px, none);
+        }
+        &__second {
+          @include styleText(14px, 200, 150%, $white-op_color, 1px, none);
+          font-family: "Saira", sans-serif;
+        }
+      }
+
+      &__buttons {
+        display: flex;
+        gap: 16px;
+
+        &__button {
+          @include button(14px, $white_color);
+          font-family: "Saira", sans-serif;
+          width: fit-content;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+@media screen and (min-width: $min-desktop) {
+  @keyframes animationHeroDev {
+    0% {
+        opacity: 0%;
+        left: -760px;
+    }
+    100% {
+        opacity: 100%;
+        left: -260px;
+    }
+    }
+  
+    @keyframes animationHeroOps {
+      0% {
+          opacity: 0%;
+          right: -260px;
+      }
+      100% {
+          opacity: 100%;
+          right: 240px;
+      }
+    }
+  .hero {
+    @include containerDesktop();
+    margin-top: 83px;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: center;
+
+    &__wrapper {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: normal;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1320px;
+    }
+
+
+    &__image-container {
+      position: relative;
+      width: 716px;
+      height: 850px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      & img {
+        width: fit-content;
+        height: 100%;
+      }
+
+      &__first-text {
+        position: absolute;
+        bottom: 500px;
+        left: -260px;
+
+        @include styleText(180px, 600, 100%, rgba(255, 255, 255, 0), 15px, uppercase);
+        -webkit-text-stroke: 7px $white_color;
+      }
+
+      &__second-text {
+        position: absolute;
+        bottom: 252px;
+        right: 240px;
+
+        @include styleText(180px, 600, 100%, $white_color, 15px, uppercase);
+      }
+    }
+
+
+    &__content {
+      position: relative;
+      bottom: 208px;
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: column;
+      gap: 32px;
+      width: 310px;
+
+      &__title {
+        @include styleText(34px, 400, 150%, $white_color, 1px, none);
+      }
+
+      &__paragraphs {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        &__first {
+          @include styleText(22px, 300, 130%, $white_color, 2px, none);
+        }
+        &__second {
+          @include styleText(16px, 200, 150%, $white-op_color, 1px, none);
+          font-family: "Saira", sans-serif;
+        }
+      }
+
+      &__buttons {
+        display: flex;
+        gap: 16px;
+
+        &__button {
+          @include button(16px, $white_color);
+          transition: 300ms;
+          cursor: pointer;
+
+          &:hover {
+            color: $black_color;
+            background-color: $white_color;
+          }
+        }
+      }
+    }
+  }
+}

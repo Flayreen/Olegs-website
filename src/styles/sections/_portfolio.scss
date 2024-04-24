@@ -1,0 +1,477 @@
+.portfolio {
+  @include containerMobile();
+  margin-top: 23px;
+  padding-bottom: 49px;
+  box-sizing: border-box;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    box-sizing: border-box;
+  }
+
+
+  &__title-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: clamp(250px, 77vw, 341px);
+
+    &.active::after {
+      display: block;
+      content: "";
+      height: 0.5px;
+      width: 100vw;
+      background-color: $white_color;
+      position: absolute;
+      z-index: -2;
+      opacity: 0%;
+      animation: animationPortfolioLine 1.2s ease 0s alternate forwards;
+    }
+
+    &__image {
+      position: absolute;
+      right: 17px;
+      height: 100%;
+      z-index: -1;
+      opacity: 0%;
+      &.active {
+        animation: animationPortfolioImage 1.2s ease 0s alternate forwards;
+      }
+    }
+
+    &__title {
+      @include styleText(clamp(20px, 11vw, 78px), 800, 100%, $black_color, 14px, uppercase);
+      font-family: "Sometype Mono", monospace;
+      -webkit-text-stroke: 1px $white_color;
+      z-index: 0;
+      opacity: 0%;
+      &.active {
+        animation: animationPortfolioTitle 1.4s ease 1.3s alternate forwards;
+      }
+    }
+  }
+
+  &__projects-scroll {
+    position: relative;
+    left: -16px;
+    width: 100vw;
+    padding: 0 16px;
+    box-sizing: border-box;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__projects-container {
+    display: flex;
+    gap: 16px;
+    width: fit-content;
+    height: fit-content;
+
+    &__number1 {
+      opacity: 0%;
+      &.active{
+        animation: animationPortfolioProjects 0.8s ease 0s alternate forwards;
+      }
+    }
+    &__number2 {
+      opacity: 0%;
+      &.active{
+        animation: animationPortfolioProjects 0.8s ease 0.8s alternate forwards;
+      }
+    }
+    &__number3 {
+      opacity: 0%;
+      &.active{
+        animation: animationPortfolioProjects 0.8s ease 1.6s alternate forwards;
+      }
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+      width: 290px;
+      padding-right: 24px;
+      border-right: 0.5px solid $white_color;
+
+      &__photo {
+        width: 150px;
+        height: 150px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & img {
+          height: 100%;
+        }
+      }
+
+      &__content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        &__text {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          &__title {
+            @include styleText(16px, 300, 150%, $white_color, 0px, none);
+            text-align: center;
+          }
+
+          &__description {
+            @include styleText(14px, 200, 150%, $white-op_color, 0px, none);
+            font-family: "Saira", sans-serif;
+          }
+        }
+
+        &__actions {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          gap: 20px;
+          align-items: flex-end;
+          justify-content: flex-end;
+
+          &__technologies {
+            display: flex;
+            width: 100%;
+            gap: 8px;
+            flex-wrap: wrap;
+
+            &__technology {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 2px 4px;
+              box-sizing: border-box;
+              border: 1px solid $white_color;
+              border-radius: 3px;
+              @include styleText(12px, 300, 150%, $white-op_color, 0px, none);
+              font-family: "Saira", sans-serif;
+              opacity: 0.8;
+            }
+          }
+
+          &__buttton {
+            border: none;
+            background-color: rgba(24, 24, 24, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            gap: 12px;
+            @include styleText(12px, 300, 150%, $white-op_color, 0px, none);
+            font-family: "Saira", sans-serif;
+
+            &__icon-right {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes animationPortfolioImage {
+  0% {
+      opacity: 0%;
+      transform: translateX(500px);
+  }
+  100% {
+      opacity: 100%;
+      transform: translateX(0);
+  }
+}
+
+@keyframes animationPortfolioTitle {
+  0% {
+      opacity: 0%;
+  }
+  50% {
+    opacity: 70%;
+  }
+  100% {
+      opacity: 100%;
+  }
+}
+
+@keyframes animationPortfolioLine {
+  0% {
+      opacity: 0%;
+      transform: translateX(-5000px);
+  }
+  100% {
+      opacity: 100%;
+      transform: translateX(0);
+  }
+}
+
+@keyframes animationPortfolioProjects {
+  0% {
+      opacity: 0%;
+  }
+  100% {
+      opacity: 100%;
+  }
+}
+
+
+@media screen and (min-width: $min-tablet) {
+  .portfolio {
+    @include containerTablet();
+    margin-top: 38px;
+    padding-bottom: 0;
+
+
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+
+    &__title-container {
+      height: clamp(341px, 46vw, 529px);
+
+      &:after {
+        height: 1px;
+      }
+
+      &__image {
+        right: 76px;
+      }
+
+      &__title {
+        @include styleText(clamp(78px, 11vw, 140px), 800, 100%, $black_color, 14px, uppercase);
+        -webkit-text-stroke: 3px $white_color;
+      }
+    }
+
+    &__projects-scroll {
+      position: relative;
+      left: 0;
+      width: 100%;
+      padding: 0;
+    }
+
+    &__projects-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+
+      &__item {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 24px;
+        width: 100%;
+        padding: 40px 16px;
+        box-sizing: border-box;
+        border-right: none;
+        border-bottom: 1px solid $white_color;
+
+        &__photo {
+          min-width: 190px;
+          height: 190px;
+        }
+
+        &__content {
+          //width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+          height: fit-content;
+
+          &__text {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+
+            &__title {
+              @include styleText(18px, 300, 24px, $white_color, 1px, none);
+              text-align: left;
+            }
+
+            &__description {
+              @include styleText(14px, 200, 150%, $white-op_color, 0px, none);
+              font-family: "Saira", sans-serif;
+            }
+          }
+
+          &__actions {
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            &__technologies {
+              display: flex;
+              width: fit-content;
+              gap: 8px;
+              flex-wrap: wrap;
+
+              &__technology {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 2px 4px;
+                box-sizing: border-box;
+                border: 1px solid $white_color;
+                border-radius: 3px;
+                @include styleText(12px, 300, 150%, $white-op_color, 0px, none);
+                font-family: "Saira", sans-serif;
+                opacity: 0.8;
+              }
+            }
+
+            &__buttton {
+              width: 110px;
+              border: none;
+              background-color: rgba(24, 24, 24, 0);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 0;
+              gap: 12px;
+              @include styleText(14px, 300, 150%, $white-op_color, 0px, none);
+              font-family: "Saira", sans-serif;
+
+              &__icon-right {
+                display: block;
+              }
+
+              &__icon-top {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+@media screen and (min-width: $min-desktop) {
+  .portfolio {
+    @include containerDesktop();
+    margin-top: 16px;
+    padding-bottom: 46px;
+
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      width: 100%;
+      max-width: 1320px;
+    }
+
+
+    &__title-container {
+      height: 529px;
+
+      &:after {
+        height: 1px;
+      }
+
+      &__image {
+        right: 165px;
+      }
+
+      &__title {
+        @include styleText(140px, 800, 100%, $black_color, 30px, uppercase);
+      }
+    }
+
+
+
+    &__projects-scroll {
+      padding: 0 112px;
+      box-sizing: border-box;
+    }
+
+    &__projects-container {
+
+      &__item {
+        gap: 80px;
+        width: 100%;
+        padding: 60px 16px;
+
+        &__photo {
+          min-width: 370px;
+          height: 227px;
+        }
+
+        &__content {
+          &__text {
+            &__title {
+              @include styleText(22px, 300, 28px, $white_color, 1px, none);
+              text-align: left;
+            }
+
+            &__description {
+              @include styleText(16px, 200, 24px, $white-op_color, 0px, none);
+              font-family: "Saira", sans-serif;
+            }
+          }
+
+          &__actions {
+
+            &__technologies {
+              gap: 10px;
+              padding: 2px 0;
+
+              &__technology {
+                padding: 4px 16px;
+                @include styleText(14px, 300, 150%, $white-op_color, 0px, none);
+              }
+            }
+
+            &__buttton {
+              padding: 4px 8px;
+              border-radius: 3px;
+              box-sizing: border-box;
+              width: 140px;
+              @include styleText(16px, 300, 150%, $white-op_color, 0px, none);
+              font-family: "Saira", sans-serif;
+
+              &__icon-right {
+                display: block;
+              }
+
+              &__icon-top {
+                display: none;
+              }
+
+              &:hover {
+                border: 1px solid $white_color;
+                background-color: $white_color;
+                color: $black_color;
+                cursor: pointer;
+              }
+
+              &:hover &__icon-right path {
+                stroke: $black_color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

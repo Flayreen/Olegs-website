@@ -1,0 +1,183 @@
+.feedback {
+    background-color: $black_color;
+    .feedback_container_main {
+        padding: 49px 0px 81px;
+        width: 100vw;
+
+        .feedback_container_second {
+            margin-bottom: 44px;
+            position: relative;
+            box-sizing: border-box;
+            .feedback_container_first {
+                display: flex;
+                box-sizing: border-box;
+                align-items: center;
+                gap: 10px; 
+                margin-left: 16px;
+                .feedback_container_feed {
+                    @include styleText(28px, 700, 100%, rgba(255, 255, 255, 0), 7px, uppercase);
+                    -webkit-text-stroke: 1px $white_color;
+                }
+                .feedback_container_back {
+                    @include styleText(28px, 700, 100%, $white_color, 7px, uppercase);
+                    opacity: 0%;
+                    &.active {
+                        animation: animationFeedback 1.2s ease 0s alternate forwards;
+                    }
+                }
+            }    
+            .feedback_line {
+                position: relative;
+                right: 0;
+                height: 1px;
+                width: 100%;
+                background-color: $white_color;
+                opacity: 0%;
+                &.active {
+                    animation: animationFeedback 1s ease 0s alternate forwards;
+                }
+            }
+        }
+        .feedback_container_card {
+            display: flex;
+            box-sizing: border-box;
+            align-items: center;
+            position: relative;
+            width: 100vw;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            opacity: 0%;
+            &.active {
+                animation: animationFeedback 1s ease 0s alternate forwards;
+            }
+
+            &::-webkit-scrollbar {
+            display: none;
+            }
+            .feedback_card {
+                display: flex;
+                box-sizing: border-box;
+                align-items: start;
+                .feedback_card_content_container {
+                    display: flex;
+                    box-sizing: border-box;
+                    gap: 19.5px;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 16px 26px;
+                    width: 312px;
+                    .feedback_card_image_container {
+                        width: 90px;
+                        height: 90px;
+                        border-radius: 150px;
+                        overflow: hidden;
+                        & img {
+                            height: 90px;
+                            width: 90px;
+                        }
+                    }
+                    & h3 {
+                        @include styleText(18px, 329, 23.4px, $white_color, 4%, capitalize);                    
+                    }
+                    & p {
+                        @include styleText(14px, 200, 20.86px, $white-op_color, 4%, capitalize);
+                        text-align: center;
+                        font-family: "Saira", sans-serif;
+                        opacity: 0.8;
+                    }
+                }
+                .feedback_card_empty_container {
+                    width: 1px;
+                    height: 352px;
+                    background-color: $white_color;
+                }  
+            }
+        }
+    }
+}
+
+@keyframes animationFeedback {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+
+@media screen and (min-width: $min-tablet) {
+    .feedback {
+        // @include containerTablet();
+        .feedback_container_main {
+            padding: 91px 0px 55px;
+            .feedback_container_second {
+                margin-bottom: 38px;
+                .feedback_container_first {
+                    margin-left: 40px;
+                    .feedback_container_feed {
+                        @include styleText(50px, 700, 100%, rgba(255, 255, 255, 0), 14px, uppercase);
+                        -webkit-text-stroke: 1px $white_color;
+                    }
+                    .feedback_container_back {
+                        @include styleText(50px, 700, 100%, $white_color, 14px, uppercase);
+                    }
+                }
+            }
+            .feedback_container_card {
+                .feedback_card {
+                    .feedback_card_content_container {
+                        padding: 16px 78px;
+                        width: 416px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: $min-desktop) {
+    .feedback {
+        @include containerDesktop();
+        .feedback_container_main {
+            width: 100%;
+            max-width: 1320px;
+            height: 100%;
+            max-height: 600px;
+            padding: 127px 0px 142px;
+            
+            .feedback_container_second {
+                display: flex;
+                box-sizing: border-box;
+                gap: 54px;
+                margin-bottom: 103px;
+                .feedback_container_first {
+                    width: 100%;
+                    gap: 26px;
+                    .feedback_container_feed {
+                        @include styleText(80px, 700, 100%, rgba(255, 255, 255, 0), 19.5px, uppercase);
+                        -webkit-text-stroke: 4px $white_color;
+                    }
+                    .feedback_container_back {
+                        @include styleText(80px, 700, 100%, $white_color, 19.5px, uppercase);
+                    }
+                }
+                //.feedback_line {
+                //    position: relative;
+                //    left: 0px;
+                //    top: 0px;
+                //    height: 1px;
+                //    margin-top: 26px;
+                //}
+            }
+            .feedback_container_card {
+                .feedback_card {
+                    .feedback_card_content_container {
+                        width: 438px;
+                    }
+                }
+            }
+        }
+    }
+}
